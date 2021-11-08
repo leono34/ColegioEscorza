@@ -1,7 +1,8 @@
 
 <!DOCTYPE html>
 <html lang="es">
-<!-- hola dance cambie el login -->
+<!-- hola dance cambie el login, okiiis EquipoDinamita -->
+
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
