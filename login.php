@@ -7,7 +7,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Skydash Admin</title>
+  <title>Login</title>
  <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
@@ -33,9 +33,6 @@
               <div class="brand-logo text-center">
                 <img src="img/logo.png" alt="logo">
               </div>
-              
-              
-
               <form class="pt-3" action="" method="post">
                 <div class="form-group">
                   <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" required name="usu">
@@ -75,10 +72,6 @@
 <?php session_start();  
 
 include_once 'conexion.php';
-
-
-   
-
  if(isset($_POST['ingresar'])){
 
 /*
@@ -88,10 +81,10 @@ esto es para evitar el ' or '1'='1
 
 */
 
-$email1=mysqli_real_escape_string($conec,$_POST['usu']);
+$user=mysqli_real_escape_string($conec,$_POST['usu']);
 $clav=mysqli_real_escape_string($conec,$_POST['pas']);
 
-$query="select * from trabajador where usuario='$email1' and clave='$clav'";
+$query="select * from usuario where usuario='$user' and clave='$clav'";
 
 $resultado=mysqli_query($conec,$query);
 
@@ -100,27 +93,23 @@ $resultado=mysqli_query($conec,$query);
 /*comprobar tipo de trabajador*/
 
 $filas=mysqli_fetch_array($resultado);
-if($filas ['tipo'] ==1)    //Directora o sub Directora
+if($filas ['TipoUser'] ==1)    //Directora o sub Directora
   { 
-   $ID=$filas['id'];
-        $_SESSION['id']=$ID;
+   $ID=$filas['CodUsuario'];
+        $_SESSION['CodUsuario']=$ID;
 
-   $onli=mysqli_query($conec,"update trabajador set con='1' where id ='".$_SESSION['id']."'");
-      header("location:p.php");
-    
+   $onli=mysqli_query($conec,"update usuario set TipoUser='1' where CodUsuario ='".$_SESSION['CodUsuario']."'");   
       header("location: d.php");
-
-    
   }
   else
 
-    if($filas['tipo']==2)   //Profesor o profesora
+    if($filas['TipoUser']==2)   //Profesor o profesora
     {  
      
-   $ID=$filas['id'];
-        $_SESSION['id']=$ID;
+   $ID=$filas['CodUsuario'];
+        $_SESSION['CodUsuario']=$ID;
 
-   $onli=mysqli_query($conec,"update trabajador set con='1' where id ='".$_SESSION['id']."'");
+   $onli=mysqli_query($conec,"update usuario set TipoUser='2' where CodUsuario ='".$_SESSION['CodUsuario']."'");
       header("location:p.php"); 
       
     }
