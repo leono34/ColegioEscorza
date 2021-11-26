@@ -124,6 +124,9 @@ $consulta="select * from usuario where CodUsuario='$id' ";
                 <li class="nav-item"> <a class="nav-link" href="directora/varchivo.php">Ver Archivos</a></li>
                 
               </ul>
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="directora/agregar.php">Agregar Docente</a></li>
+              </ul>
             </div>
           </li>
         </ul>

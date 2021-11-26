@@ -130,6 +130,9 @@ $consulta="select * from usuario where CodUsuario='$id' ";
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="varchivo.php">Ver Archivos</a></li>
               </ul>
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="agregar.php">Agregar Docente</a></li>
+              </ul>
             </div>
           </li>
         </ul>
@@ -167,6 +170,7 @@ $consulta="select * from usuario where CodUsuario='$id' ";
                         <td>Nombre y Apellido</td>
                         <td>Nombre del Curso</td>
                         <td>Archivo</td>
+                        <td>Descarga</td>
                       </tr>
                     </thead>
                     <tbody>
@@ -182,7 +186,8 @@ $consulta="SELECT u.NomUsuario,u.ApellidoUsuario ,c.NomCurso ,a.Ruta
                       <tr>
                         <td><?=$filas['ApellidoUsuario']?>, <?=$filas['NomUsuario']?> </td>
                         <td><?=$filas['NomCurso']?></td>
-                        <td><a class="btn btn-inverse-info btn-fw" download href="<?=$filas['Ruta']?>">ver</a></td>
+                        <td><a class="btn btn-dark btn-fw" view href="<?=$filas['Ruta']?>">ver</a> </td>
+                        <td><a class="btn btn-inverse-info btn-fw" download href="<?=$filas['Ruta']?>">Descarga</a></td>
                       </tr>
 <?php } ?>
 

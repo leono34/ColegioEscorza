@@ -173,7 +173,7 @@ $consulta="select * from usuario where CodUsuario='$id' ";
                       <label>Subir Archivo</label>
                       <input type="file" name="file" class="file-upload-default">
                       <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="Subir archivo">
                         <span class="input-group-append">
                           <button class="file-upload-browse btn btn-primary" type="button">Elegir Archivo</button>
                         </span>

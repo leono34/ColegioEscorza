@@ -160,6 +160,7 @@ $consulta="select * from usuario where CodUsuario='$id' ";
                         <td>Nombre y Apellido</td>
                         <td>Nombre del Curso</td>
                         <td>Archivo</td>
+                        <td>Descarga</td>
                       </tr>
                     </thead>
                       <tbody>
@@ -173,7 +174,8 @@ $consulta="select * from usuario where CodUsuario='$id' ";
                               <tr>
                                 <td><?=$filas['ApellidoUsuario']?>, <?=$filas['NomUsuario']?> </td>
                                 <td><?=$filas['NomCurso']?></td>
-                                <td><a class="btn btn-inverse-info btn-fw" download href="<?=$filas['Ruta']?>">ver</a></td>
+                                <td><a class="btn btn-dark btn-fw" view href="<?=$filas['Ruta']?>">ver</a> </td>
+                                <td><a class="btn btn-inverse-info btn-fw" download href="<?=$filas['Ruta']?>">descargar</a></td>
                               </tr>
                             <?php } ?>
                       </tbody>

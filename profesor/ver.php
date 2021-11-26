@@ -16,13 +16,9 @@ $query = "INSERT INTO archivos (idp,nomape,nombre,ruta)
     VALUES ('$id','$nombre','$curso','$nombrefinal')";
 $conec->query($query);*/
 
-$query = "INSERT INTO archivo (IdDocente,ruta) 
-    VALUES ('$id','$nombrefinal')";
+$query = "INSERT INTO archivo (IdDocente,DescripcionArchivo,ruta) 
+    VALUES ('$id','$detalle','$nombrefinal')";
 $conec->query($query);
-$query2 = "INSERT INTO detallearchivo (NomDocente,Curso,DescripcionDet) 
-    VALUES ('$nombre','$curso','$detalle')";
-$conec->query($query2);
-
 }?>
 
 
