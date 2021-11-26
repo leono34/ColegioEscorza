@@ -1,11 +1,9 @@
 <?php 
 session_start();  
-
 include_once 'conexion.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -27,12 +25,9 @@ include_once 'conexion.php';
 <link rel="icon" href="img/logo.ico" type="image/x-icon" />
 </head>
 <body>
-
 <?php 
-
 if (!isset($_SESSION['CodUsuario'])) {
- ?>
-
+?>
 <img src="https://cdn.pixabay.com/photo/2018/01/04/15/51/404-error-3060993_960_720.png">
 <?php
 }else{

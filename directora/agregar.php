@@ -1,13 +1,9 @@
 <?php 
-session_start();  
-
+session_start(); 
 include_once '../conexion.php';
-
-
- ?>
+?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -31,33 +27,15 @@ include_once '../conexion.php';
   <link rel="icon" href="../img/logo.ico" type="image/x-icon" />
 </head>
 <body>
-
 <?php 
-
 if (!isset($_SESSION['CodUsuario'])) {
-
-
-
- ?>
-
-
-
-
-
+?>
 <img src="https://cdn.pixabay.com/photo/2018/01/04/15/51/404-error-3060993_960_720.png">
-
-
-
-
 <?php
 }else{
-
   $id=$_SESSION['CodUsuario'];
-
-
 $consulta="select * from usuario where CodUsuario='$id' ";
         $resultado=mysqli_query($conec,$consulta);
-        
         while ($filas=mysqli_fetch_array($resultado)){
           
   ?>
@@ -155,49 +133,68 @@ $consulta="select * from usuario where CodUsuario='$id' ";
             </div>
           </div>
 <!--* Tabla de Subir archivos*/-->
-            <div class="row">
-                <div class="col-12 grid-margin stretch-card">
-                    <div class="card">
-                        <div class="card-body">
+          <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+              <div class="card-body">
                             <h2 class="card-title">Agregar Docente</h2>
-                            <form>
+                  <div class="table-responsive">
+                  <form action="validar.php" method="post" enctype="multipart/form-data"> 
                                 <div class="form-group">
                                     <label for="validation01">Nombre Completo</label>
                                     <input type="text" class="form-control" id="validation01" 
-                                            placeholder="Digite Solo Nombres" required>
+                                            placeholder="Digite Solo Nombres" name="NomUSuario" required >
                                 </div>
                                 <div class="form-group">
                                     <label for="validation02">Apellidos</label>
                                     <input type="text" class="form-control" id="validation02"
-                                    placeholder="Digite Solo Apellido" required>
+                                    placeholder="Digite Solo Apellido" name="ApellidoUSuario" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="validation02">Subir Imagen</label>
+                                  <label>Subir Imagen de Perfil</label>
+                                  <input type="file" name="imagen" class="file-upload-default">
                                     <div class="input-group col-xs-12">
-                                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                        <input type="text" class="form-control file-upload-info" disabled placeholder="Subir archivo">
                                         <span class="input-group-append">
-                                        <button class="file-upload-browse btn btn-primary" type="button">Subir imagen</button>
+                                          <button class="file-upload-browse btn btn-primary" type="button">Elegir Archivo</button>
                                         </span>
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                <label for="validation02">Curso</label>
+                                  <select class="form-control" id="exampleFormControlSelect1" name="curso">
+                                  <?php
+                                  $con="SELECT * FROM tb_curso WHERE idCurso>=2";
+                                    $ejecutar=mysqli_query($conec,$con)or die(mysqli_error($conexion));
+                                  while ($cursos=mysqli_fetch_array($ejecutar))
+                                    foreach ($ejecutar as $opcion):
+                                  ?>
+                                    <option value="<?php echo $opcion['idCurso']?>"><?php echo $opcion['NomCurso']?></option>
+                                  <?php endforeach ?>
+                                  </select>   
+                                </div>
+                                <div class="form-group">
                                     <label for="validation02">Usuario :</label>
                                     <input type="text" class="form-control" id="validation02"
-                                    placeholder="Digite Solo Apellido" required>
+                                    placeholder="Digite Solo Apellido" name="user" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="validation02">Contraseñas :</label>
-                                    <input type="text" class="form-control" id="validation02"
-                                    placeholder="Digite Solo Apellido" required>
+                                    <input type="password" class="form-control" id="validation02"
+                                    placeholder="Digite Solo Apellido" name="clave" required>
                                 </div>
+                                
+                                <button type="submit" name="enviar" class="btn btn-primary mr-2">Agregar</button>
+                                <button class="btn btn-dark">Cancel</button>
                             </form>
+                 </div>
 
 
-                            </div>
-                        </div>
-                    </div>
                 </div>
+              </div>
             </div>
+          </div>
+        </div>
 
 
         <!-- content-wrapper ends -->

@@ -1,13 +1,9 @@
 <?php 
-session_start();  
-
+session_start(); 
 include_once '../conexion.php';
-
-
- ?>
+?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -31,33 +27,15 @@ include_once '../conexion.php';
   <link rel="icon" href="../img/logo.ico" type="image/x-icon" />
 </head>
 <body>
-
 <?php 
-
 if (!isset($_SESSION['CodUsuario'])) {
-
-
-
- ?>
-
-
-
-
-
+?>
 <img src="https://cdn.pixabay.com/photo/2018/01/04/15/51/404-error-3060993_960_720.png">
-
-
-
-
 <?php
 }else{
-
   $id=$_SESSION['CodUsuario'];
-
-
 $consulta="select * from usuario where CodUsuario='$id' ";
         $resultado=mysqli_query($conec,$consulta);
-        
         while ($filas=mysqli_fetch_array($resultado)){
           
   ?>
@@ -182,7 +160,7 @@ $consulta="SELECT u.NomUsuario,u.ApellidoUsuario ,c.NomCurso ,a.Ruta
         
         while ($filas=mysqli_fetch_array($resultado)){
 
-   ?>
+?>
                       <tr>
                         <td><?=$filas['ApellidoUsuario']?>, <?=$filas['NomUsuario']?> </td>
                         <td><?=$filas['NomCurso']?></td>
